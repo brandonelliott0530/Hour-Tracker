@@ -1,9 +1,12 @@
 import React from "react";
+import "./App.css";
 
 export default function Tabs({ currentPage, handlePageChange }) {
   return (
     <ul className="tabs">
-      <li className="nav-item">
+      <li
+        className={currentPage === "Dashboard" ? "nav-item-active" : "nav-item"}
+      >
         <a
           href="#dashboard"
           onClick={() => handlePageChange("Dashboard")}
@@ -14,7 +17,11 @@ export default function Tabs({ currentPage, handlePageChange }) {
           Dashboard
         </a>
       </li>
-      <li className="nav-item">
+      <li
+        className={
+          currentPage === "Statistics" ? "nav-item-active" : "nav-item"
+        }
+      >
         <a
           href="#statistics"
           onClick={() => handlePageChange("Statistics")}
@@ -25,7 +32,10 @@ export default function Tabs({ currentPage, handlePageChange }) {
           Statistics
         </a>
       </li>
-      <li className="nav-item">
+
+      <li
+        className={currentPage === "Profile" ? "nav-item-active" : "nav-item"}
+      >
         <a
           href="#profile"
           onClick={() => handlePageChange("Profile")}

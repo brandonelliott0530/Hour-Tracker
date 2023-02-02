@@ -2,5 +2,5 @@ import React from "react";
 import "../../App.css";
 
 export default function Dashboard() {
-  <h1>HI THIS IS MY Dashboard</h1>;
+  return <h1 id="dashboard-title">HI THIS IS MY Dashboard</h1>;
 }

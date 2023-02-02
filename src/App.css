@@ -1,13 +1,75 @@
+
 #header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding-bottom: 1px;  
+  justify-content: space-between;
+}
+
+#appName {
+  margin-left: 5%
 }
 
 #navBar {
   width: 25%;
+  margin-bottom: 0;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-bottom: 0;
+  
+}
+
+.nav-item {
+  list-style: none;
+  border: 1px solid black;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 40px;
+  width: 100px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  
+}
+.nav-item-active {
+  box-shadow: 5px 5px 10px black;
+  list-style: none;
+    border: 1px solid black;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 40px;
+    width: 100px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+}
+.nav-item:hover {
+  box-shadow: 5px 5px 10px black;  
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link-active {
+  color: black;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-right: 5%;
+  align-items: center;
+}
+
+#dashboard-title {
+  border: 1px solid black;
+  
 }
