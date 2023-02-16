@@ -21,12 +21,12 @@
 
 .nav-item {
   list-style: none;
-  border: 1px solid black;
+  
   margin-left: 5px;
   margin-right: 5px;
   height: 40px;
   width: 100px;
-  border-radius: 15px;
+  border-radius: 5px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -37,12 +37,12 @@
 .nav-item-active {
   box-shadow: 5px 5px 10px black;
   list-style: none;
-    border: 1px solid black;
+    
     margin-left: 5px;
     margin-right: 5px;
     height: 40px;
     width: 100px;
-    border-radius: 15px;
+    border-radius: 5px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -92,6 +92,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-top: 20px;
 }
 
 #addRoButton {
@@ -102,7 +103,7 @@ margin-right: 5px;
   margin-left: 5px;
 }
 
-#roSection {
+.roSection {
   margin-top: 15px;
   margin-left: 25px;
   background: #e9ecef;
@@ -110,6 +111,7 @@ margin-right: 5px;
   padding-bottom: 15px;
   width: 25%;
   border-radius: 20px;
+  position: relative;
 }
 
 
@@ -118,13 +120,55 @@ margin-right: 5px;
   margin-bottom: 2px;
 }
 
-#roList {
+/* #roList {
   display: flex;
   flex-direction: column;
   padding-left: 0px;
+  margin-top: 15px;
+  margin-left: 25px;
+} */
+
+.roList {
+  list-style: none;
+  width: 25%;
+  height: 10%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* .roList:first-child:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  z-index: 1;
+} */
+
+
+
+.roList:hover {
+  cursor: pointer;
+  
+}
+
+.roList:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
 }
 #totalRoCount {
-  border: 1px solid black;
+  
   width: 20%;
   display: flex;
   flex-direction: row;
@@ -136,7 +180,30 @@ margin-right: 5px;
   color: white;
 }
 
+#hoursPerRo {
+ 
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  border-radius: 20px;
+  background-color: #6c757d;
+  color: white;
+}
+
+#hoursPerRoTitle {
+  margin-bottom: 2px
+}
+
 #roDefaultText {
 margin-top: 10px;
 text-align: center;
+}
+
+#roStatistics {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
 }
