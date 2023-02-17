@@ -9,12 +9,38 @@ export default function Dashboard() {
   const [dateValue, setDateValue] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [selectedRo, setSelectedRo] = useState(null);
+  const [typeOfWork, setTypeOfWork] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleTypeOfWorkChange = (event) => {
+    setTypeOfWork(event.target.value);
+  };
 
   const addRoToList = () => {
+    if (!inputValue) {
+      setErrorMessage("Please enter a RO number");
+      return;
+    }
+
+    if (!descriptionValue) {
+      setErrorMessage("Please enter a description of the work");
+      return;
+    }
+
+    if (typeOfWork !== "Customer Pay" && typeOfWork !== "Warranty") {
+      setErrorMessage("Please Select a type of work");
+      return;
+    }
+
     if (selectedRo) {
       const updatedList = list.map((item) =>
         item === selectedRo
-          ? { ro: inputValue, description: descriptionValue, date: dateValue }
+          ? {
+              ro: inputValue,
+              description: descriptionValue,
+              date: dateValue,
+              typeOfWork: typeOfWork,
+            }
           : item
       );
       setList(updatedList);
@@ -22,13 +48,20 @@ export default function Dashboard() {
     } else {
       setList([
         ...list,
-        { ro: inputValue, description: descriptionValue, date: dateValue },
+        {
+          ro: inputValue,
+          description: descriptionValue,
+          date: dateValue,
+          typeOfWork: typeOfWork,
+        },
       ]);
     }
     setInputValue("");
     setDescriptionValue("");
     setDateValue("");
     handleCloseModal();
+    setTypeOfWork("");
+    setErrorMessage("");
   };
 
   const handleRoChange = (event) => {
@@ -69,7 +102,7 @@ export default function Dashboard() {
         </ul>
       </section>
       <section className="roSection">
-        <h4 id="roTitle">My Repair Orders</h4>
+        <h4 id="roTitle">My Active Repair Orders</h4>
         <div id="roButtons">
           <button
             type="button"
@@ -90,26 +123,41 @@ export default function Dashboard() {
           </button>
         </div>
         <Modal show={showModal} onHide={handleCloseModal}>
-          <Modal.Header closeButton>
+          <Modal.Header>
             <Modal.Title>Add Repair Order</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
+              {errorMessage && (
+                <div className="alert alert-danger" role="alert">
+                  {errorMessage}
+                </div>
+              )}
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Enter Repair Order Number</Form.Label>
                 <Form.Control
                   type="number"
-                  placeholder="Enter RO Number"
+                  placeholder="RO Number"
                   value={inputValue}
                   onChange={handleRoChange}
                 />
                 <Form.Label>Enter Description of work</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter Description"
+                  placeholder="Description"
                   value={descriptionValue}
                   onChange={handleDescriptionChange}
                 />
+                <Form.Label>Type of Work</Form.Label>
+                <Form.Control
+                  as="select"
+                  onChange={handleTypeOfWorkChange}
+                  value={typeOfWork}
+                >
+                  <option value="">Select Work Type</option>
+                  <option value="Customer Pay">Customer Pay</option>
+                  <option value="Warranty">Warranty</option>
+                </Form.Control>
                 <Form.Label>Enter Date</Form.Label>
                 <Form.Control
                   type="date"
@@ -142,6 +190,9 @@ export default function Dashboard() {
             </li>
           ))}
         </ul>
+        <div className="quickStats">
+          <p id="totalRo">Total ROs: {list.length}</p>
+        </div>
       </section>
     </>
   );
