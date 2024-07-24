@@ -109,7 +109,7 @@ margin-right: 5px;
   background: #e9ecef;
   padding-top: 15px;  
   padding-bottom: 15px;
-  width: 25%;
+  width: 33%;
   border-radius: 20px;
   position: relative;
 }
@@ -138,11 +138,11 @@ margin-right: 5px;
 }
 .roList {
   list-style: none;
-  width: 25%;
+  width: 33%;
   height: 10%;
   text-align: left;
   white-space: nowrap;
-  overflow: hidden;
+  /* overflow: hidden; */
   text-overflow: ellipsis;
 }
 
